@@ -28,10 +28,10 @@ function get_id() {
                     {
                         //not us
                         var waitTime = 15 * 60 * 1000; // = 15 min.
-						setTimeout(function(){ get_id(); }, waitTime);
+                        setTimeout(function(){ get_id(); }, waitTime);
                     }
-					var waitTime = 15 * 60 * 1000; // = 15 min.
-					setTimeout(function(){ get_id(); }, waitTime);
+                    var waitTime = 15 * 60 * 1000; // = 15 min.
+                    setTimeout(function(){ get_id(); }, waitTime);
                 }
             });
         }
@@ -72,7 +72,7 @@ function get_appid(steamid, sessionid){
                     appid: appid_arr[i],
                     action: "accept"
                 });
-				console.log("Accepted curator package => " + appid_arr[i]);
+                console.log("Accepted curator package => " + appid_arr[i]);
             }
 
         }
