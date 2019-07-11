@@ -12,33 +12,30 @@ function get_id() {
                     var get_steamID = response.responseText;
                     var json = JSON.parse(get_steamID);
 
-					if (json[0]['steamid'] == 0){
-						//nobody set as claimer.
-						setTimeout(function(){ get_id(); }, 1000);
-					}
-					else
-					{
-						let mysteamid;
-						if (typeof g_AccountID !== 'undefined') {
-							mysteamid = "765";
-							mysteamid += Number(61197960265728) + Number(g_AccountID);
-						}
-						if (typeof g_steamID !== 'undefined') {
-							mysteamid = g_steamID;
-						}
+                    if (json[0]['steamid'] == 0){
+                        //nobody set as claimer.
+                        setTimeout(function(){ get_id(); }, 1000);
+                    }
+                    else
+                    {
+                        let mysteamid;
+                        if (typeof g_AccountID !== 'undefined') {
+                            mysteamid = "765";
+                            mysteamid += Number(61197960265728) + Number(g_AccountID);
+                        }
+                        if (typeof g_steamID !== 'undefined') {
+                            mysteamid = g_steamID;
+                        }
 
-						if (json[0]['steamid'] == parseInt(mysteamid)) {
-							get_appid(mysteamid,g_sessionID);
-						}
-						else
-						{
-							//not us
-							var waitTime = 15 * 60 * 1000; // = 15 min.
-							setTimeout(function(){ get_id(); }, waitTime);
-						}
-						var waitTime = 15 * 60 * 1000; // = 15 min.
-						setTimeout(function(){ get_id(); }, waitTime);
-					}
+                        if (json[0]['steamid'] == parseInt(mysteamid)) {
+                            get_appid(mysteamid,g_sessionID);
+                        }
+                        else
+                        {
+                            //not us
+                            setTimeout(function(){ get_id(); }, 1000);
+                        }
+                    }
                 }
             });
         }
@@ -81,7 +78,8 @@ function get_appid(steamid, sessionid){
                 });
                 console.log("Accepted curator package => " + appid_arr[i]);
             }
-
+            var waitTime = 15 * 60 * 1000; // = 15 min.
+            setTimeout(function(){ get_id(); }, waitTime);
         }
     });
 }
