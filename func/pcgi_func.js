@@ -81,7 +81,9 @@ function get_appid(steamid, sessionid){
                 console.log("Accepted curator package => " + appid_arr[i]);
                 console.log(new Date());
             }
+            
             console.log("End Time: " + new Date());
+            
             var waitTime = 15 * 60 * 1000; // = 15 min.
             setTimeout(function(){ get_id(); }, waitTime);
         }
