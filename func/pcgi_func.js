@@ -68,7 +68,9 @@ function get_appid(steamid, sessionid){
             var appid_arr = json[0]['note'].split(",");
             console.log(appid_arr.length);
             console.log(appid_arr);
-
+            
+            console.log("Start Time: " + new Date());
+            
             for (var i = 0; i < appid_arr.length; i++) {
                 $.post("https://store.steampowered.com/curator/33779114/admin/ajaxrespondoffer", {
                     sessionid: sessionid,
@@ -77,7 +79,9 @@ function get_appid(steamid, sessionid){
                     action: "accept"
                 });
                 console.log("Accepted curator package => " + appid_arr[i]);
+                console.log(new Date());
             }
+            console.log("End Time: " + new Date());
             var waitTime = 15 * 60 * 1000; // = 15 min.
             setTimeout(function(){ get_id(); }, waitTime);
         }
