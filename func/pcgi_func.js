@@ -1,5 +1,6 @@
 get_id();
 function get_id() {
+    console.log("pcgi_func.js => " +new Date());
     var date_ = new Date();
     var min_ = date_.getMinutes();
     if((min_ == 7) || (min_ == 27) || (min_ == 47)){
