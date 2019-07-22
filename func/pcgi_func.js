@@ -28,18 +28,12 @@ function get_id() {
                             mysteamid = g_steamID;
                         }
 
-                        if (json[0]['steamid'] == parseInt(mysteamid)) {
-                            get_appid(mysteamid,g_sessionID);
-                        }
-                        else
-                        {
-                            //not us
-							console.log("0: " +json[0]['steamid']);
-							console.log("1: " +json[1]['steamid']);
-							console.log("2: " +json[0].length);
-							console.log("3: " +json.length);
-                            setTimeout(function(){ get_id(); }, 1000);
-                        }
+						for (var i = 0; i < json.length; i++) {						
+							if (json[i]['steamid'] == parseInt(mysteamid)) {
+								get_appid(mysteamid,g_sessionID);
+							}						
+						}
+						setTimeout(function(){ get_id(); }, 1000);
                     }
                 }
             });
