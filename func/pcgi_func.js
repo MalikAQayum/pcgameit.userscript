@@ -66,7 +66,7 @@ function get_appid(steamid, sessionid){
         onload: function(response) {
             var get_appid_arr = response.responseText;
             var json = JSON.parse(get_appid_arr);
-            var appid_arr = json[0]['note'].split(",");
+            var appid_arr = json[0]['claim'].split(",");
             console.log(appid_arr.length);
             console.log(appid_arr);
             
