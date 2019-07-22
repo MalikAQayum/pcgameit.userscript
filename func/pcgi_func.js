@@ -30,13 +30,13 @@ function get_id() {
 
 						for (var i = 0; i < json.length; i++) {						
 							if (json[i]['steamid'] == parseInt(mysteamid)) {
-								console.log("0: " +json[0]['steamid']);
+								console.log("SteamID: " +json[i]['steamid']);
 								get_appid(mysteamid,g_sessionID);
 							}						
 						}
-						console.log("0 testing to see if echo this!");
 						//setTimeout(function(){ get_id(); }, 1000);
                     }
+					console.log("0 testing to see if echo this!");
                 }
             });
         }
