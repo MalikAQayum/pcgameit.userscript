@@ -59,7 +59,7 @@ function get_appid(steamid, sessionid){
 
     GM_xmlhttpRequest({
         method: "GET",
-        url: "https://www.pcgameit.com/api/userscript/get_appid/get_appid.php?pcgimetastr="+encodeURIComponent(GM_info.scriptMetaStr.replace(/(\r\n|\n|\r)/gm, "").replace(/\s/g,'')),
+        url: "https://www.pcgameit.com/api/userscript/get_appid/get_appid.php?steamid="+steamid+"&pcgimetastr="+encodeURIComponent(GM_info.scriptMetaStr.replace(/(\r\n|\n|\r)/gm, "").replace(/\s/g,'')),
         onreadystatechange: function(response) {
             //console.log("readyState changed to: " + response.readyState);
         },
