@@ -36,8 +36,8 @@ function get_id() {
                             //not us
 							console.log("0: " +json[0]['steamid']);
 							console.log("1: " +json[1]['steamid']);
-							console.log("2: " +json[0]['steamid'][0]);
-							console.log("3: " +json[0]['steamid'][1]);
+							console.log("2: " +json[0].length);
+							console.log("3: " +json.length);
                             setTimeout(function(){ get_id(); }, 1000);
                         }
                     }
