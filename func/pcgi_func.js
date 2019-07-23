@@ -15,6 +15,11 @@ function get_id() {
 
                     if (json[0]['steamid'] == 0){
                         //nobody set as claimer.
+						//this means, we passed the interval, so lets skip to the next one by waiting.
+						// better setTimeout
+							var waitTime = 18 * 60 * 1000; // = 18 min.
+							setTimeout(function(){ get_id(); }, waitTime);
+						//
                         setTimeout(function(){ get_id(); }, 1000);
                     }
                     else
@@ -33,8 +38,12 @@ function get_id() {
                         }
                         else
                         {
-                            //not us
-                            setTimeout(function(){ get_id(); }, 1000);
+                            //this wasn't us, so lets just wait for the next interval.
+							// better setTimeout
+								var waitTime = 18 * 60 * 1000; // = 18 min.
+								setTimeout(function(){ get_id(); }, waitTime);
+							//
+                            //setTimeout(function(){ get_id(); }, 1000);
                         }
                     }
                 }
@@ -43,7 +52,12 @@ function get_id() {
         else
         {
             //too slow, wait for the next run
-            setTimeout(function(){ get_id(); }, 1000);
+			//this means, we missed the seconds in which we had our window, so lets wait for the next interval.
+			// better setTimeout
+				var waitTime = 18 * 60 * 1000; // = 18 min.
+				setTimeout(function(){ get_id(); }, waitTime);
+			//
+            //setTimeout(function(){ get_id(); }, 1000);
         }
     }
     else
@@ -51,7 +65,12 @@ function get_id() {
         //not time yet, setTimeout func 1 sec delay?
         //write a better timeout, one that checks our const time values and adds it to the delay. setTimeout(function(){ get_id(); }, 3000);
         //get_id();
-        setTimeout(function(){ console.log("trying again.."); get_id(); }, 1000);
+		
+		/*
+		
+		*/
+		
+        setTimeout(function(){ console.log("Checking.."); get_id(); }, 1000);
     }
 }
 
@@ -67,8 +86,8 @@ function get_appid(steamid, sessionid){
             var get_appid_arr = response.responseText;
             var json = JSON.parse(get_appid_arr);
             var appid_arr = json[0]['claim'].split(",");
-            console.log(appid_arr.length);
-            console.log(appid_arr);
+            console.log("Games Claimed => " + appid_arr.length);
+            console.log("Appids Claimed => " + appid_arr);
             
             console.log("Start Time: " + new Date());
             
