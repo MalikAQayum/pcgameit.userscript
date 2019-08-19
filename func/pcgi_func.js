@@ -15,16 +15,16 @@ function get_id() {
 
                     if (json[0]['steamid'] == 0){
                         //nobody set as claimer.
-						//this means, we passed the interval, so lets skip to the next one by waiting.
-						// better setTimeout
-							var waitTime = 18 * 60 * 1000; // = 18 min.
-							setTimeout(function(){ get_id(); }, waitTime);
-						//
+                        //this means, we passed the interval, so lets skip to the next one by waiting.
+                        // better setTimeout
+                        var waitTime = 18 * 60 * 1000; // = 18 min.
+                        setTimeout(function(){ get_id(); }, waitTime);
+                        //
                         setTimeout(function(){ get_id(); }, 1000);
                     }
                     else
                     {
-						//we can remove the steamcommunity variable.
+                        //we can remove the steamcommunity variable.
                         let mysteamid;
                         if (typeof g_AccountID !== 'undefined') {
                             mysteamid = "765";
@@ -40,10 +40,10 @@ function get_id() {
                         else
                         {
                             //this wasn't us, so lets just wait for the next interval.
-							// better setTimeout
-								var waitTime = 18 * 60 * 1000; // = 18 min.
-								setTimeout(function(){ get_id(); }, waitTime);
-							//
+                            // better setTimeout
+                            var waitTime = 18 * 60 * 1000; // = 18 min.
+                            setTimeout(function(){ get_id(); }, waitTime);
+                            //
                             //setTimeout(function(){ get_id(); }, 1000);
                         }
                     }
@@ -53,11 +53,11 @@ function get_id() {
         else
         {
             //too slow, wait for the next run
-			//this means, we missed the seconds in which we had our window, so lets wait for the next interval.
-			// better setTimeout
-				var waitTime = 18 * 60 * 1000; // = 18 min.
-				setTimeout(function(){ get_id(); }, waitTime);
-			//
+            //this means, we missed the seconds in which we had our window, so lets wait for the next interval.
+            // better setTimeout
+            var waitTime = 18 * 60 * 1000; // = 18 min.
+            setTimeout(function(){ get_id(); }, waitTime);
+            //
             //setTimeout(function(){ get_id(); }, 1000);
         }
     }
@@ -66,11 +66,11 @@ function get_id() {
         //not time yet, setTimeout func 1 sec delay?
         //write a better timeout, one that checks our const time values and adds it to the delay. setTimeout(function(){ get_id(); }, 3000);
         //get_id();
-		
-		/*
-		
-		*/
-		
+
+        /*
+
+	*/
+
         setTimeout(function(){ console.log("Checking.."); get_id(); }, 1000);
     }
 }
@@ -89,9 +89,9 @@ function get_appid(steamid, sessionid){
             var appid_arr = json[0]['claim'].split(",");
             console.log("Games Claimed => " + appid_arr.length);
             console.log("Appids Claimed => " + appid_arr);
-            
+
             console.log("Start Time: " + new Date());
-            
+
             for (var i = 0; i < appid_arr.length; i++) {
                 $.post("https://store.steampowered.com/curator/33779114/admin/ajaxrespondoffer", {
                     sessionid: sessionid,
@@ -102,9 +102,9 @@ function get_appid(steamid, sessionid){
                 console.log("Accepted curator package => " + appid_arr[i]);
                 console.log(new Date());
             }
-            
+
             console.log("End Time: " + new Date());
-            
+
             var waitTime = 15 * 60 * 1000; // = 15 min.
             setTimeout(function(){ get_id(); }, waitTime);
         }
