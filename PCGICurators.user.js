@@ -12,7 +12,7 @@
 // ==/UserScript==
 
 
-/** hUsage and how it works.
+/** Usage and how it works.
 Once PCGI Userscript has been installed, it runs in the background on the https://store.steampowered.com.
 
 Go to any https://store.steampowered.com related pages or stay on the main page, and it will trigger itself every 20 min on set times of the hour;
