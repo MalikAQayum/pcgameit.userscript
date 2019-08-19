@@ -8,9 +8,9 @@ Click Install to add it to Tampermonkey : [Install](https://github.com/MalikAQay
 
 ## Usage and how it works.
 
-**Once PCGI Userscript has been installed, it runs in the background on the store.steampowered.com.**
+**Once PCGI Userscript has been installed, it runs in the background on the https://store.steampowered.com.**
 
-- Go to any store.steampowered.com related pages or stay on the main page, and it will trigger itself every 20 min on set times of the hour; 
+- Go to any https://store.steampowered.com related pages or stay on the main page, and it will trigger itself every 20 min on set times of the hour; 
   - minute 7
   - minute 27
   - minute 47 

@@ -24,6 +24,7 @@ function get_id() {
                     }
                     else
                     {
+						//we can remove the steamcommunity variable.
                         let mysteamid;
                         if (typeof g_AccountID !== 'undefined') {
                             mysteamid = "765";
