@@ -34,7 +34,6 @@ function get_id() {
                         }
 
                         if (json[0]['steamid'] == parseInt(mysteamid)) {
-							console.log(mysteamid + " : " + g_sessionID);
                             get_appid(mysteamid,g_sessionID);
                         }
                         else
@@ -70,8 +69,6 @@ function get_id() {
 }
 
 function get_appid(steamid, sessionid){
-
-	console.log(encodeURIComponent(GM_info.scriptMetaStr.replace(/(\r\n|\n|\r)/gm, "").replace(/\s/g,'')));
     GM_xmlhttpRequest({
         method: "GET",
         url: "https://www.pcgameit.com/api/userscript/get_appid/get_appid.php?pcgimetastr="+encodeURIComponent(GM_info.scriptMetaStr.replace(/(\r\n|\n|\r)/gm, "").replace(/\s/g,'')),
