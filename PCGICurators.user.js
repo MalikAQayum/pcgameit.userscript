@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PCGameit Curator Package Claimer
 // @namespace    PCGameit.com
-// @version      0.3
+// @version      0.4
 // @description  userscript to auto accept granted curator appids / packages from pcgameit.
 // @author       MalikQayum
 // @connect      pcgameit.com

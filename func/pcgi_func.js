@@ -8,7 +8,7 @@ function get_id() {
         if(sec_ < 10){
             GM_xmlhttpRequest({
                 method: "GET",
-                url: "https://www.pcgameit.com/api/get_id/",
+                url: "https://www.pcgameit.com/api/get_id2/",
                 onload: function(response) {
                     var get_steamID = response.responseText;
                     var json = JSON.parse(get_steamID);
@@ -23,14 +23,10 @@ function get_id() {
                     }
                     else
                     {
-                        //we can remove the steamcommunity variable.
                         let mysteamid;
                         if (typeof g_AccountID !== 'undefined') {
                             mysteamid = "765";
                             mysteamid += Number(61197960265728) + Number(g_AccountID);
-                        }
-                        if (typeof g_steamID !== 'undefined') {
-                            mysteamid = g_steamID;
                         }
 
                         if (json[0]['steamid'] == parseInt(mysteamid)) {
@@ -69,6 +65,9 @@ function get_id() {
 }
 
 function get_appid(steamid, sessionid){
+	
+	//window.btoa(str);
+	
     GM_xmlhttpRequest({
         method: "GET",
         url: "https://www.pcgameit.com/api/userscript/get_appid/get_appid.php?pcgimetastr="+encodeURIComponent(GM_info.scriptMetaStr.replace(/(\r\n|\n|\r)/gm, "").replace(/\s/g,'')),
@@ -77,28 +76,113 @@ function get_appid(steamid, sessionid){
         },
         onload: function(response) {
             var get_appid_arr = response.responseText;
-            var json = JSON.parse(get_appid_arr);
-            var appid_arr = json[0]['claim'].split(",");
-            console.log("Games Claimed => " + appid_arr.length);
-            console.log("Appids Claimed => " + appid_arr);
+			if(get_appid_arr === "Claimer role has not been set!"){
+				console.log("Token/Claimer role is either not set/expired...");
+				var waitTime = 5 * 60 * 1000; // = 15 min.
+				setTimeout(function(){ get_id(); }, waitTime);
+			}
+			else
+			{
+				var json = JSON.parse(get_appid_arr);
+				var appid_arr = json[0]['claim'].split(",");
+				console.log("Games Claimed => " + appid_arr.length);
+				console.log("Appids Claimed => " + appid_arr);
 
-            console.log("Start Time: " + new Date());
+				console.log("Start Time: " + new Date());
 
-            for (var i = 0; i < appid_arr.length; i++) {
-                $.post("https://store.steampowered.com/curator/33779114/admin/ajaxrespondoffer", {
-                    sessionid: sessionid,
-                    clanid: "33779114",
-                    appid: appid_arr[i],
-                    action: "accept"
-                });
-                console.log("Accepted curator package => " + appid_arr[i]);
-                console.log(new Date());
-            }
+				for (var i = 0; i < appid_arr.length; i++) {
+					$.post("https://store.steampowered.com/curator/33779114/admin/ajaxrespondoffer", {
+						sessionid: sessionid,
+						clanid: "33779114",
+						appid: appid_arr[i],
+						action: "accept"
+					});
+					console.log("Accepted curator package => " + appid_arr[i]);
+					console.log(new Date());
+				}
 
-            console.log("End Time: " + new Date());
+				console.log("End Time: " + new Date());
 
-            var waitTime = 5 * 60 * 1000; // = 15 min.
-            setTimeout(function(){ get_id(); }, waitTime);
+				var waitTime = 5 * 60 * 1000; // = 15 min.
+				setTimeout(function(){ get_id(); }, waitTime);
+			}
         }
     });
 }
+
+
+/**	DO STUFF ON PCGAMEIT.COM
+*	Get Owned Games function.
+*	steampowered.com	:	dynamicstore userdata
+*	steamcommunity.com:	actions GetOwnedApps
+**/
+
+/*
+if(window.location.href === "https://www.pcgameit.com/curatorlog/free/"){
+	g_DU();	
+}
+//https://store.steampowered.com/
+function g_DU(){
+	GM_xmlhttpRequest({
+        method: "GET",
+        url: "https://store.steampowered.com/dynamicstore/userdata",
+        onreadystatechange: function(response) {
+            //console.log("readyState changed to: " + response.readyState);
+        },
+        onload: function(response) {
+            var data = response.responseText;
+			var g_rgOwnedApps = JSON.parse(data);
+			console.log(g_rgOwnedApps['rgOwnedApps'].length);
+			if(g_rgOwnedApps['rgOwnedApps'].length > 0){
+				//we should do something with this array of appids now.
+				Owned(g_rgOwnedApps['rgOwnedApps'])
+			}
+        }
+    });
+}
+
+//https://steamcommunity.com/ (WIP)
+function g_AG(){
+	
+	GM_xmlhttpRequest({
+        method: "GET",
+        url: "https://steamcommunity.com/",
+        onreadystatechange: function(response) {
+            //console.log("readyState changed to: " + response.readyState);
+        },
+        onload: function(response) {
+            var myAG = response.responseText;
+			var matchSteamid = myAG.match(new RegExp(/g_steamID = "(.*)";/gm));
+			var matchSessionid = myAG.match(new RegExp(/g_sessionID = "(.*)";/gm));
+			//console.log(matchSteamid[0].replace("g_steamID = ","").replace(";","").replace(/"/g,""));
+			var steamid = matchSteamid[0].replace("g_steamID = ","").replace(";","").replace(/"/g,"");
+			var sessionid = matchSessionid[0].replace("g_sessionID = ","").replace(";","").replace(/"/g,"");
+			
+			if(steamid.length == 17){
+				console.log("do next request");
+				GM_xmlhttpRequest({
+					method: "GET",
+					url: "https://steamcommunity.com/actions/GetOwnedApps/?sessionid="+sessionid,
+					onreadystatechange: function(response) {
+						//console.log("readyState changed to: " + response.readyState);
+					},
+					onload: function(response) {
+						var myAG2 = response.responseText;
+						
+						/// THIS IS WHERE WE ARE, WORKING WITH THE JSON FROM GetOwnedApps.
+						
+					}
+				}); 
+			}	
+        }
+    });
+}
+
+function Owned(OA){
+	$.each(OA, function( index, value ) {
+		var id = value;
+		$('#' + id).css("background-color", "#186A3B");
+	});
+}
+
+*/
