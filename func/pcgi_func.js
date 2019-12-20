@@ -8,7 +8,7 @@ function get_id() {
         if(sec_ < 10){
             GM_xmlhttpRequest({
                 method: "GET",
-                url: "https://www.pcgameit.com/api/get_id2/",
+                url: "https://www.pcgameit.com/api/get_id/",
                 onload: function(response) {
                     var get_steamID = response.responseText;
                     var json = JSON.parse(get_steamID);
