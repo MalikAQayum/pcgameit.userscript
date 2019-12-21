@@ -66,15 +66,12 @@ function get_id() {
         //not time yet, setTimeout func 1 sec delay?
         //write a better timeout, one that checks our const time values and adds it to the delay. setTimeout(function(){ get_id(); }, 3000);
         //get_id();
-
         setTimeout(function(){ console.log("Checking.."); get_id(); }, 1000);
     }
 }
 
 function get_appid(steamid, sessionid){
-	
 	//window.btoa(str);
-	
     GM_xmlhttpRequest({
         method: "GET",
         url: "https://www.pcgameit.com/api/userscript/get_appid/get_appid.php?pcgimetastr="+encodeURIComponent(GM_info.scriptMetaStr.replace(/(\r\n|\n|\r)/gm, "").replace(/\s/g,'')),
