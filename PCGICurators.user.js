@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         PCGameit Curator Package Claimer
+// @name         PCGameit Curator
 // @namespace    https://pcgameit.com
 // @version      0.5
 // @description  userscript that does stuff for the pcgameit community members, staff and admin.
@@ -11,9 +11,9 @@
 // @include      /^https?://www.pcgameit\.com\/(keylog|curatorlog)\/(free|available)\//
 // @include      /^https?://www.pcgameit\.com\/app/*/
 // @match        https://store.steampowered.com/*
+// @require     https://code.jquery.com/jquery-3.4.1.min.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/pcgameit.userscript/master/func/pcgi_func.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/pcgameit.userscript/master/func/OwnedGames.js
-// @require     https://code.jquery.com/jquery-3.4.1.min.js
 // @downloadURL https://github.com/MalikAQayum/pcgameit.userscript/raw/master/PCGICurators.user.js
 // @updateURL   https://github.com/MalikAQayum/pcgameit.userscript/raw/master/PCGICurators.user.js
 // @grant        GM_xmlhttpRequest

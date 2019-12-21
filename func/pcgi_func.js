@@ -1,8 +1,10 @@
-var pcgi_claim = new RegExp(/store\.steampowered\.com\//);
-if(document.URL.match(pcgi_claim))
-{
-	get_id();
-}
+$(document).ready(function(){
+	var pcgi_claim = new RegExp(/store\.steampowered\.com\//);
+	if(document.URL.match(pcgi_claim))
+	{
+		get_id();
+	}
+});
 
 function get_id() {
     //console.log("pcgi_func.js => " +new Date());
