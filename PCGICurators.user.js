@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PCGameit Curator
 // @namespace    https://pcgameit.com
-// @version      0.5
+// @version      0.6
 // @description  userscript that does stuff for the pcgameit community members, staff and admin.
 // @author       MalikQayum
 // @connect      pcgameit.com
