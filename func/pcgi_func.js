@@ -1,4 +1,11 @@
-get_id();
+$(document).ready(function(){
+	var pcgi_claim = new RegExp(/store\.steampowered\.com\//);
+	if(document.URL.match(pcgi_claim))
+	{
+		get_id();
+	}
+});
+
 function get_id() {
     //console.log("pcgi_func.js => " +new Date());
     var date_ = new Date();
@@ -109,77 +116,3 @@ function get_appid(steamid, sessionid){
         }
     });
 }
-
-
-/**	DO STUFF ON PCGAMEIT.COM
-*	Get Owned Games function.
-*	steampowered.com	:	dynamicstore userdata
-*	steamcommunity.com:	actions GetOwnedApps
-**/
-
-/*
-if(window.location.href === "https://www.pcgameit.com/curatorlog/free/"){
-	g_DU();	
-}
-//https://store.steampowered.com/
-function g_DU(){
-	GM_xmlhttpRequest({
-        method: "GET",
-        url: "https://store.steampowered.com/dynamicstore/userdata",
-        onreadystatechange: function(response) {
-            //console.log("readyState changed to: " + response.readyState);
-        },
-        onload: function(response) {
-            var data = response.responseText;
-			var g_rgOwnedApps = JSON.parse(data);
-			console.log(g_rgOwnedApps['rgOwnedApps'].length);
-			if(g_rgOwnedApps['rgOwnedApps'].length > 0){
-				//we should do something with this array of appids now.
-				Owned(g_rgOwnedApps['rgOwnedApps'])
-			}
-        }
-    });
-}
-//https://steamcommunity.com/ (WIP)
-function g_AG(){
-	
-	GM_xmlhttpRequest({
-        method: "GET",
-        url: "https://steamcommunity.com/",
-        onreadystatechange: function(response) {
-            //console.log("readyState changed to: " + response.readyState);
-        },
-        onload: function(response) {
-            var myAG = response.responseText;
-			var matchSteamid = myAG.match(new RegExp(/g_steamID = "(.*)";/gm));
-			var matchSessionid = myAG.match(new RegExp(/g_sessionID = "(.*)";/gm));
-			//console.log(matchSteamid[0].replace("g_steamID = ","").replace(";","").replace(/"/g,""));
-			var steamid = matchSteamid[0].replace("g_steamID = ","").replace(";","").replace(/"/g,"");
-			var sessionid = matchSessionid[0].replace("g_sessionID = ","").replace(";","").replace(/"/g,"");
-			
-			if(steamid.length == 17){
-				console.log("do next request");
-				GM_xmlhttpRequest({
-					method: "GET",
-					url: "https://steamcommunity.com/actions/GetOwnedApps/?sessionid="+sessionid,
-					onreadystatechange: function(response) {
-						//console.log("readyState changed to: " + response.readyState);
-					},
-					onload: function(response) {
-						var myAG2 = response.responseText;
-						
-						/// THIS IS WHERE WE ARE, WORKING WITH THE JSON FROM GetOwnedApps.
-						
-					}
-				}); 
-			}	
-        }
-    });
-}
-function Owned(OA){
-	$.each(OA, function( index, value ) {
-		var id = value;
-		$('#' + id).css("background-color", "#186A3B");
-	});
-}
-*/

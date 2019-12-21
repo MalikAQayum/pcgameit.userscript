@@ -1,14 +1,26 @@
 // ==UserScript==
 // @name         PCGameit Curator Package Claimer
-// @namespace    PCGameit.com
-// @version      0.5
-// @description  userscript to auto accept granted curator appids / packages from pcgameit.
+// @namespace    https://pcgameit.com
+// @version      0.6
+// @description  userscript that does stuff for the pcgameit community members, staff and admin.
 // @author       MalikQayum
 // @connect      pcgameit.com
+// @connect      api.steampowered.com
+// @connect      store.steampowered.com
+// @connect      steamcommunity.com
+// @include      /^https?://www.pcgameit\.com\/(keylog|curatorlog)\/(free|available)\//
+// @include      /^https?://www.pcgameit\.com\/app/*/
 // @match        https://store.steampowered.com/*
-// @require     https://raw.githubusercontent.com/MalikAQayum/pcgameit.userscript/master/func/pcgi_func.js
 // @require     https://code.jquery.com/jquery-3.4.1.min.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/pcgameit.userscript/master/func/pcgi_func.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/pcgameit.userscript/master/func/OwnedGames.js
+// @downloadURL https://github.com/MalikAQayum/pcgameit.userscript/raw/master/PCGICurators.user.js
+// @updateURL   https://github.com/MalikAQayum/pcgameit.userscript/raw/master/PCGICurators.user.js
 // @grant        GM_xmlhttpRequest
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_deleteValue
+// @grant        GM_addStyle
 // ==/UserScript==
 
 
@@ -30,4 +42,4 @@ Once PCGI Userscript has been installed, it runs in the background on the https:
 **/
 
 var Version = GM_info.script.version, Name = GM_info.script.name, Author = GM_info.script.author, Namespace = GM_info.script.namespace;
-console.log ('%c '+Name + ': v'+Version + ' by '+Author, 'background: grey; color: white; display: block;', Namespace);
+console.log ('%c '+Name + ': v'+Version + ' by '+Author, 'background: yellow; color: black; display: block;', Namespace);
