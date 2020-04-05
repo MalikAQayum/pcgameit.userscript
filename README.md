@@ -31,4 +31,9 @@ Click Install to add it to Tampermonkey : [Install](https://github.com/MalikAQay
 	- app
 	- key
 	- curator log
+	- curator log > free
+	- curator log > vr
 	- key log
+	- key log > free
+	- key log > vr
+	- hidden
