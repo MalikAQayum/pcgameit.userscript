@@ -1,12 +1,14 @@
 $(document).ready(function(){
-	var pcgi_OwnedGames = new RegExp(/pcgameit\.com\/(app|key|keylog|curatorlog|hidden|vr)\//);
-	if(document.URL.match(pcgi_OwnedGames))
-	{
-		g_DU();
-		//g_AG();
-	}
-});
+    setInterval(function(){
+		var pcgi_OwnedGames = new RegExp(/pcgameit\.com\/(app|key|keylog|curatorlog|hidden|vr)\//);
+        if(document.URL.match(pcgi_OwnedGames))
+        {
+            g_DU();
+            //g_AG();
+        }
+    }, 5000);
 
+});
 //https://store.steampowered.com/
 function g_DU(){
     GM_xmlhttpRequest({
