@@ -5,7 +5,6 @@
 // @description  autoscrolling for the pages that has a lot of data.
 // @author       MalikQayum
 // @include      /^https?://www.pcgameit\.com\/(keylog|curatorlog)\/(free|available|vr)\//
-// @require     https://code.jquery.com/jquery-3.4.1.min.js
 // ==/UserScript==
 
 /* added this little script to autoscroll for stefan.
