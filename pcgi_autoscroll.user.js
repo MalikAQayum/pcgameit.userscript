@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PCGameit.com autoscroll
 // @namespace    https://pcgameit.com
-// @version      0.0.4
+// @version      0.0.5
 // @description  autoscrolling for the pages that has a lot of data.
 // @author       MalikQayum
 // @connect      pcgameit.com
@@ -35,7 +35,7 @@ setInterval(function(){
 }, delaytimer);
 
 setInterval(function(){
-  var AutoScrollingPages = new RegExp(/pcgameit\.com\/(keylog|curatorlog)\/(free|available|vr)\//); 
+  var AutoScrollingPages = new RegExp(/pcgameit\.com\/(keylog|curatorlog)\/(free|vr)\//); 
   if(document.URL.match(AutoScrollingPages))
   {
     if(autoscrolling < smallmaxscrolls){
