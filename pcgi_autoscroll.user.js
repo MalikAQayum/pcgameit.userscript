@@ -4,7 +4,6 @@
 // @version      0.0.5
 // @description  autoscrolling for the pages that has a lot of data.
 // @author       MalikQayum
-// @connect      pcgameit.com
 // @include      /^https?://www.pcgameit\.com\/(keylog|curatorlog)\/(free|available|vr)\//
 // @require     https://code.jquery.com/jquery-3.4.1.min.js
 // ==/UserScript==
