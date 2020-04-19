@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PCGameit.com autoscroll
 // @namespace    https://pcgameit.com
-// @version      0.0.1
+// @version      0.0.2
 // @description  autoscrolling for the pages that has a lot of data.
 // @author       MalikQayum
 // @connect      pcgameit.com
@@ -9,7 +9,7 @@
 // @require     https://code.jquery.com/jquery-3.4.1.min.js
 // ==/UserScript==
 
-var maxscrolls = 100;
+var maxscrolls = 75;
 var autoscrolling = 0;
 
 setInterval(function(){ 
