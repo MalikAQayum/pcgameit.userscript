@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PCGameit.com autoscroll
 // @namespace    https://pcgameit.com
-// @version      0.0.3
+// @version      0.0.4
 // @description  autoscrolling for the pages that has a lot of data.
 // @author       MalikQayum
 // @connect      pcgameit.com
